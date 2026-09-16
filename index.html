@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#09070b">
+
+<title>16 · Siempre llegas a la parte más profunda de mí</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=DM+Sans:wght@400;500&family=Playfair+Display:ital,wght@0,500;1,500&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    min-height:100vh;
+    background:
+        radial-gradient(circle at 50% 42%, rgba(139,91,119,.18), transparent 28%),
+        radial-gradient(circle at 20% 80%, rgba(95,69,105,.12), transparent 30%),
+        #09070b;
+    color:#f5edf2;
+    font-family:"DM Sans",sans-serif;
+    overflow-x:hidden;
+}
+
+/* ------------------------------
+   FONDO PULSANTE
+------------------------------ */
+
+.background{
+    position:fixed;
+    inset:0;
+    overflow:hidden;
+    pointer-events:none;
+    z-index:0;
+}
+
+.pulse{
+    position:absolute;
+    left:50%;
+    top:43%;
+    width:260px;
+    height:260px;
+    transform:translate(-50%,-50%);
+    border:1px solid rgba(220,177,201,.12);
+    border-radius:50%;
+    animation:pulse 5s ease-out infinite;
+}
+
+.pulse:nth-child(2){
+    animation-delay:1.6s;
+}
+
+.pulse:nth-child(3){
+    animation-delay:3.2s;
+}
+
+@keyframes pulse{
+    0%{
+        transform:translate(-50%,-50%) scale(.45);
+        opacity:.05;
+    }
+
+    45%{
+        opacity:.45;
+    }
+
+    100%{
+        transform:translate(-50%,-50%) scale(2.4);
+        opacity:0;
+    }
+}
+
+/* ------------------------------
+   PEQUEÑAS PARTÍCULAS
+------------------------------ */
+
+.dust{
+    position:absolute;
+    width:2px;
+    height:2px;
+    background:rgba(245,237,242,.45);
+    border-radius:50%;
+    animation:float 8s ease-in-out infinite;
+}
+
+.d1{left:12%;top:23%;animation-delay:0s;}
+.d2{left:78%;top:18%;animation-delay:2s;}
+.d3{left:88%;top:63%;animation-delay:4s;}
+.d4{left:17%;top:72%;animation-delay:1s;}
+.d5{left:55%;top:14%;animation-delay:5s;}
+.d6{left:42%;top:82%;animation-delay:3s;}
+.d7{left:68%;top:78%;animation-delay:6s;}
+
+@keyframes float{
+    0%,100%{
+        transform:translateY(0);
+        opacity:.2;
+    }
+
+    50%{
+        transform:translateY(-18px);
+        opacity:.8;
+    }
+}
+
+/* ------------------------------
+   CONTENEDOR
+------------------------------ */
+
+main{
+    position:relative;
+    z-index:2;
+    width:min(900px,92%);
+    margin:auto;
+    padding:55px 0 70px;
+}
+
+/* ------------------------------
+   INTRO
+------------------------------ */
+
+.intro{
+    min-height:82vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    animation:appear 1.6s ease both;
+}
+
+.number{
+    font-family:"Cinzel",serif;
+    font-size:.72rem;
+    letter-spacing:7px;
+    color:#bfa9b7;
+    margin-bottom:30px;
+}
+
+.intro h1{
+    font-family:"Cinzel",serif;
+    font-weight:500;
+    font-size:clamp(1.55rem,5vw,3rem);
+    line-height:1.45;
+    letter-spacing:2px;
+    max-width:720px;
+}
+
+.intro h1 span{
+    display:block;
+    margin-top:14px;
+    font-family:"Playfair Display",serif;
+    font-style:italic;
+    font-size:1rem;
+    letter-spacing:1px;
+    color:#c9afbe;
+    font-weight:400;
+}
+
+.scroll{
+    margin-top:55px;
+    font-size:.7rem;
+    letter-spacing:4px;
+    color:#82747e;
+    animation:breath 2.5s ease-in-out infinite;
+}
+
+.scroll::after{
+    content:"";
+    display:block;
+    width:1px;
+    height:55px;
+    margin:15px auto 0;
+    background:linear-gradient(to bottom,#a98b9e,transparent);
+}
+
+@keyframes breath{
+    0%,100%{opacity:.35;}
+    50%{opacity:1;}
+}
+
+/* ------------------------------
+   POEMA
+------------------------------ */
+
+.poem-section{
+    position:relative;
+    padding:20px 0;
+}
+
+.poem-card{
+    position:relative;
+    padding:55px clamp(25px,7vw,75px);
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.055),
+            rgba(255,255,255,.018)
+        );
+    border:1px solid rgba(221,190,209,.15);
+    border-radius:34px;
+    box-shadow:
+        0 30px 100px rgba(0,0,0,.55),
+        inset 0 1px 0 rgba(255,255,255,.05);
+    backdrop-filter:blur(18px);
+    -webkit-backdrop-filter:blur(18px);
+    overflow:hidden;
+}
+
+.poem-card::before{
+    content:"";
+    position:absolute;
+    width:180px;
+    height:180px;
+    top:-90px;
+    right:-70px;
+    border-radius:50%;
+    background:rgba(190,142,171,.09);
+    filter:blur(30px);
+}
+
+.poem-card::after{
+    content:"";
+    position:absolute;
+    width:150px;
+    height:150px;
+    bottom:-80px;
+    left:-60px;
+    border-radius:50%;
+    background:rgba(113,91,121,.08);
+    filter:blur(30px);
+}
+
+.poem-title{
+    position:relative;
+    z-index:2;
+    text-align:center;
+    font-family:"Cinzel",serif;
+    font-size:clamp(1.05rem,3.8vw,1.7rem);
+    line-height:1.6;
+    letter-spacing:1.5px;
+    color:#f7edf3;
+    margin-bottom:34px;
+}
+
+.nickname{
+    position:relative;
+    z-index:2;
+    text-align:center;
+    font-family:"Playfair Display",serif;
+    font-style:italic;
+    color:#d4b8c7;
+    font-size:1.05rem;
+    margin-bottom:40px;
+}
+
+.poem{
+    position:relative;
+    z-index:2;
+    font-family:"Playfair Display",serif;
+    font-size:clamp(1.05rem,3.5vw,1.25rem);
+    line-height:2;
+    color:#eee4ea;
+}
+
+.poem p{
+    margin-bottom:25px;
+}
+
+.poem strong{
+    font-family:"DM Sans",sans-serif;
+    font-weight:500;
+    color:#fff4fa;
+}
+
+.final-love{
+    margin-top:42px;
+    text-align:center;
+    font-family:"Cinzel",serif;
+    font-size:clamp(1rem,3vw,1.3rem);
+    line-height:1.8;
+    letter-spacing:1px;
+    color:#f7eaf1;
+}
+
+/* ------------------------------
+   FIRMA
+------------------------------ */
+
+.signature{
+    margin-top:65px;
+    text-align:center;
+    font-family:"Cinzel",serif;
+    letter-spacing:3px;
+    font-size:.85rem;
+    line-height:2;
+    color:#d8c3ce;
+}
+
+.signature span{
+    display:block;
+    margin-top:10px;
+    font-size:clamp(1rem,3vw,1.25rem);
+    color:#fff0f7;
+}
+
+/* ------------------------------
+   PIE DE EXPERIENCIA
+------------------------------ */
+
+.footer{
+    text-align:center;
+    margin-top:75px;
+    color:#746870;
+    font-size:.68rem;
+    letter-spacing:3px;
+    line-height:2;
+}
+
+/* ------------------------------
+   ANIMACIONES
+------------------------------ */
+
+@keyframes appear{
+    from{
+        opacity:0;
+        transform:translateY(25px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+.poem-card{
+    animation:cardAppear 1.4s ease both;
+    animation-delay:.35s;
+}
+
+@keyframes cardAppear{
+    from{
+        opacity:0;
+        transform:translateY(35px) scale(.98);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0) scale(1);
+    }
+}
+
+/* ------------------------------
+   MÓVIL
+------------------------------ */
+
+@media(max-width:600px){
+
+    main{
+        width:90%;
+        padding-top:25px;
+    }
+
+    .intro{
+        min-height:88vh;
+    }
+
+    .intro h1{
+        letter-spacing:1px;
+    }
+
+    .poem-card{
+        padding:42px 23px;
+        border-radius:27px;
+    }
+
+    .poem{
+        line-height:1.9;
+        font-size:1.03rem;
+    }
+
+    .poem p{
+        margin-bottom:23px;
+    }
+
+    .signature{
+        margin-top:50px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="background">
+
+    <div class="pulse"></div>
+    <div class="pulse"></div>
+    <div class="pulse"></div>
+
+    <div class="dust d1"></div>
+    <div class="dust d2"></div>
+    <div class="dust d3"></div>
+    <div class="dust d4"></div>
+    <div class="dust d5"></div>
+    <div class="dust d6"></div>
+    <div class="dust d7"></div>
+
+</div>
+
+<main>
+
+    <section class="intro">
+
+        <div class="number">
+            MIÉRCOLES · 16 · SEPTIEMBRE
+        </div>
+
+        <h1>
+            ✦ SIEMPRE LLEGAS A LA PARTE MÁS PROFUNDA DE MÍ ✦
+
+            <span>
+                Hay amores que se dicen.<br>
+                Y hay otros que simplemente laten.
+            </span>
+        </h1>
+
+        <div class="scroll">
+            PARA TI
+        </div>
+
+    </section>
+
+
+    <section class="poem-section">
+
+        <article class="poem-card">
+
+            <h2 class="poem-title">
+                ✦ SIEMPRE LLEGAS A LA PARTE MÁS PROFUNDA DE MÍ ✦
+            </h2>
+
+            <div class="nickname">
+                Para ti, mi Latido de Seda ❤️‍🔥
+            </div>
+
+            <div class="poem">
+
+                <p>
+                    Desde temprano dejé estas palabras guardadas para ti,
+                    como un secreto que mi corazón no quiso esperar
+                    para poder decirte cuánto te ama.
+                </p>
+
+                <p>
+                    Y si las encuentras al despertar,
+                    quiero que sean ese primer pequeño abrazo
+                    que llegue hasta ti aunque yo no esté a tu lado.
+                </p>
+
+                <p>
+                    Pero si las lees más tarde,
+                    cuando el día ya haya avanzado,
+                    quiero que sepas algo todavía más bonito:
+                </p>
+
+                <p>
+                    <strong>mi amor por ti no tiene horario.</strong>
+                </p>
+
+                <p>
+                    Te pienso cuando comienza el día,
+                    te deseo cerca cuando pasan las horas,
+                    y cuando cierro los ojos,
+                    sigues siendo ese lugar donde mi corazón
+                    quiere quedarse para siempre.
+                </p>
+
+                <p>
+                    Porque tú no eres solamente la mujer que amo;
+                    eres esa parte de mí que despierta mis ganas de sentir,
+                    de cuidar, de abrazar,
+                    de besarte lentamente
+                    y perderme en ti sin querer encontrar el camino de regreso.
+                </p>
+
+                <p>
+                    <strong>Mi Latido de Seda,</strong>
+                    si pudiera acercarme ahora mismo,
+                    no te diría demasiado...
+                </p>
+
+                <p>
+                    solo te abrazaría fuerte,
+                    juntaría mi frente con la tuya
+                    y dejaría que mi corazón te confesara en silencio:
+                </p>
+
+                <p class="final-love">
+                    <strong>
+                        te amo muchísimo más de lo que mis palabras alcanzan a decir,
+                        y cada día vuelvo a elegirte con todo lo que soy.
+                    </strong>
+                </p>
+
+            </div>
+
+            <div class="signature">
+                ❤️‍🔥
+                <span>VALERIA PETRO VILLAZÓN</span>
+                ❤️‍🔥
+            </div>
+
+        </article>
+
+    </section>
+
+
+    <div class="footer">
+        HECHO DESDE TEMPRANO · PARA QUE TE ENCUENTRE EN CUALQUIER MOMENTO DEL DÍA
+    </div>
+
+</main>
+
+</body>
+  </html>
